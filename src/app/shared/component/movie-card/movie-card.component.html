@@ -1,0 +1,45 @@
+<header class="bg-warning text-white text-center p-4 mb-4"><h1>movieCard</h1></header>
+<div class="row">
+    <div class="col-md-4 mb-4"*ngFor="let movie of moviesData">
+        <div class="card">
+            <figure class="movieCard text-white">
+                <!-- multi img vdo aud -->
+                 <img
+                 class="w-100"
+                 src="https://image.tmdb.org/t/p/w500/{{movie.poster_path}}"
+                 [alt]="movie.title || movie.original_title"
+                 [title]="movie.title || movie.original_title"
+                 >
+                 <figcaption>
+                    <div class="movieTitle p-3">
+                        <div class="row">
+                            <div class="col-10">
+                                <h3 class="mb-0">{{movie.title}}</h3>
+                            </div>
+                            <div class="col-2 align-self-center">
+                                <span 
+                               [ngClass]="{
+                                'bg-success':movie.vote_average >=7,
+                                'bg-warning':movie.vote_average >=5 && movie.vote_average < 7,
+                                'bg-danger':movie.vote_average < 5
+                               }"
+                                class="bg-warning p-2 rating">{{movie.vote_average}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="movieOverView">
+                        <h4>{{movie.title||movie.original_title}}</h4>
+                        <p>
+                            <span>Overview</span>
+                            {{movie.overview}}
+                           
+                        </p>
+                    </div>
+                 </figcaption>
+
+            </figure>
+           
+        </div>
+
+    </div>
+</div>
